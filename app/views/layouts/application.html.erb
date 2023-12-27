@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>MyApp</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+    <%= stylesheet_link_tag 'styling' %>
+  </head>
+
+  <body>
+    <%= render 'shared/header' %>
+    <div class="container">
+      <% if notice.present? %>
+        <div class="notice mt-5"><%= notice %></div>
+      <% end %>
+      <% if alert.present? %>
+        <div class="alert"><%= alert %></div>
+      <% end %>
+      <%= yield %>
+    </div>
+  </body>
+</html>

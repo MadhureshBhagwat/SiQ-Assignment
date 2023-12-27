@@ -1,0 +1,23 @@
+<article>
+  <div class="col-lg-12">
+    <h4 class="card-title"><%= comment.user.full_name(comment.user.id) + " : " %><span class="lead"><%= comment.content %></span></h4>
+
+    <%= link_to 'Reply', "#", class: "comment-form-display btn btn-success mx-2" %>
+    <div class="comment-form">
+      <%= render partial: 'comments/form', locals: {post: comment.post, parent: comment } %>
+    </div>
+    <hr />
+    <div class="sub-comment">
+      <%= render comment.comments.order(id: :desc) %>
+    </div>
+  </div>
+</article>
+
+<script>
+  document.querySelectorAll('.comment-form-display').forEach((el) => {
+    el.addEventListener('click', (ev) => {
+      ev.preventDefault();
+      el.nextElementSibling.style = 'display: block';
+    });
+  });
+</script>
